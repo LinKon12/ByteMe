@@ -33,12 +33,10 @@ public class AdminController {
     public void removeItem(@PathVariable Long id) {
         menuManagement.removeItem(id);
     }
-
     @GetMapping("/orders/pending")
     public List<Orders> getPendingOrders() {
         return orderManagement.getPendingOrders();
     }
-
     @PutMapping("/orders/{id}/status")
     public Orders updateOrderStatus(@PathVariable Long id, @RequestParam String status) {
         return orderManagement.updateOrderStatus(id, status);

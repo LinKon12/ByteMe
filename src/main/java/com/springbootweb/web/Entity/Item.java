@@ -11,16 +11,26 @@ public class Item {
 private long Id;
 private String name;
 private Double price;
+private String category;
 private String description;
 
-    public Item(long id, String name, Double price, String description) {
+    public Item(long id, String name, Double price, String category, String description) {
         Id = id;
         this.name = name;
         this.price = price;
+        this.category = category;
         this.description = description;
     }
 
     public Item() {
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public long getId() {
