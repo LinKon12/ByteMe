@@ -22,6 +22,10 @@ public class CustomerController {
     public Customer getCustomerById(@PathVariable Long id) {
         return customerService.getCustomerById(id);
     }
+    @GetMapping("/findByEmail")
+    public Customer getCustomerByEmail(@RequestParam String email) {
+        return customerService.getCustomerByEmail(email);
+    }
 
     @GetMapping
     public List<Customer> getAllCustomers() {
