@@ -10,6 +10,8 @@ public class Orders {
 
     @ManyToOne
     private Item item;
+    @ManyToOne
+    private Customer customer;
 
     private String status;
     private boolean isVIP;

@@ -3,8 +3,11 @@ package com.springbootweb.web.Repository;
 import com.springbootweb.web.Entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
+
+
+// INVENTORY
+
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item,Long> {
