@@ -13,5 +13,6 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item,Long> {
     List<Item> findByName(String keyword);
     List<Item> findByCategory(String category);
-
+    List<Item> findAllByOrderByPriceAsc();
+    List<Item> findAllByOrderByPriceDesc();
 }

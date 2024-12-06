@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//CUSTOMER SIDE
+
 @Service
 public class CartService {
     @Autowired

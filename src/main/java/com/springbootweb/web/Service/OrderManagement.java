@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+//ADMIN SIDE
+
 @Service
 public class OrderManagement {
     @Autowired
@@ -31,6 +33,17 @@ public class OrderManagement {
             }
         });
         return pendingOrders;
+    }
+
+    public List<Orders> getSpecialRequestOrders() {
+        List<Orders> allOrders = orderRepository.findAll();
+        ArrayList<Orders> specialRequestOrders = new ArrayList<>();
+        for (Orders orders : allOrders) {
+            if (orders.getSpecialRequest() != null) {
+                specialRequestOrders.add(orders);
+            }
+        }
+        return specialRequestOrders;
     }
 
     public Orders updateOrderStatus(Long id, String status) {

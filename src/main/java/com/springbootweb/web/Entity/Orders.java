@@ -14,13 +14,15 @@ public class Orders {
     private Customer customer;
 
     private String status;
+    private String specialRequest;
     private boolean isVIP;
 
-    public Orders(Long id, Item item, String status, boolean isVIP) {
+    public Orders(Long id, Item item, String status, boolean isVIP, String specialRequest) {
         this.id = id;
         this.item = item;
         this.status = status;
         this.isVIP = isVIP;
+        this.specialRequest = specialRequest;
     }
 
     public Orders() {
@@ -53,9 +55,16 @@ public class Orders {
     public boolean isVIP() {
         return isVIP;
     }
-
     public void setVIP(boolean VIP) {
         isVIP = VIP;
+    }
+
+    public String getSpecialRequest() {
+        return specialRequest;
+    }
+
+    public void setSpecialRequest(String specialRequest) {
+        this.specialRequest = specialRequest;
     }
 }
 
