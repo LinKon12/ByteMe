@@ -28,7 +28,7 @@ public class CartService {
         return cartRepository.findByCustomer(customer);
     }
 
-    public void removeFromCart(Long cartItemId) {
+    public void removeFromCart(Long cartItemId)  {
         cartRepository.deleteById(cartItemId);
     }
 
@@ -37,4 +37,5 @@ public class CartService {
                 .mapToDouble(cart -> cart.getMenuItem().getPrice() * cart.getQuantity())
                 .sum();
     }
+    //todo: implement modify
 }

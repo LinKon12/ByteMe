@@ -1,6 +1,7 @@
 package com.springbootweb.web.Service;
 
 import com.springbootweb.web.Entity.Item;
+import com.springbootweb.web.Repository.CartRepository;
 import com.springbootweb.web.Repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,8 @@ import java.util.List;
 public class MenuService {
     @Autowired
     private ItemRepository itemRepository;
+    @Autowired
+    private CartRepository cartRepository;
 
     public List<Item> getAllItems() {
         return itemRepository.findAll();

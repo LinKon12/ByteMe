@@ -1,1 +1,7 @@
 // REPORT GENERATION
+// NOTES FOR NEXT TIME: (18 December 2024 Monday this has to be done)
+WORKING ON Cart Methods like adding etc
+PROBLEM check last prompt of chatgpt and understand how ResponseEntity works and also how the program is working (done)
+        also ensure this flow : existing customer is adding items to cart, then the order is placed and added to order
+        repository along-with its marked status "  Placed ", then as making the order the admin can change the status to " Prepared "
+
