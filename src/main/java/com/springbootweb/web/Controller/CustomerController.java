@@ -3,8 +3,10 @@ package com.springbootweb.web.Controller;
 import com.springbootweb.web.Entity.Cart;
 import com.springbootweb.web.Entity.Customer;
 import com.springbootweb.web.Entity.Item;
+import com.springbootweb.web.Entity.Orders;
 import com.springbootweb.web.Repository.CustomerRepository;
 import com.springbootweb.web.Repository.ItemRepository;
+import com.springbootweb.web.Repository.OrderRepository;
 import com.springbootweb.web.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,8 @@ public class CustomerController {
     private CustomerRepository customerRepository;
     @Autowired
     private ItemRepository itemRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
     @PostMapping("/register")
     public Customer registerCustomer(@RequestBody Customer customer) {
@@ -84,7 +88,6 @@ public class CustomerController {
         cartService.removeFromCart(cartItemId);
         return ResponseEntity.ok("Item removed from cart successfully!");
     }
-
     @GetMapping("/cart/total")
     public ResponseEntity<Double> calculateCartTotal(@RequestParam Long customerId) {
         Customer customer = new Customer();
@@ -106,5 +109,23 @@ public class CustomerController {
 
         Cart cart = cartService.addToCart(customer, item, quantity);
         return ResponseEntity.ok(cart);
+    }
+
+    @PostMapping("/placeOrder")
+    public ResponseEntity<String> placeOrder(@RequestParam Long customerId) {
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found with ID: " + customerId));
+
+        String response = cartService.placeOrder(customer);
+        return ResponseEntity.ok(response);
+    }
+    @DeleteMapping("/cancelOrder/{orderID}")
+    public ResponseEntity<String> cancelOrder(@PathVariable Long orderID){
+        orderService.cancelOrder(orderID);
+        return ResponseEntity.ok("Order cancelled successfully!");
+    }
+    @GetMapping("/viewOrderHistory/{customerID}")
+    public List<Orders> viewOrderHistory(@RequestParam Long customerId){
+        return customerRepository.findById(customerId).get().getOrders();
     }
 }

@@ -10,6 +10,8 @@ public class Orders {
 
     @ManyToOne
     private Item item;
+    private int quantity;
+
     @ManyToOne
     private Customer customer;
 
@@ -17,15 +19,33 @@ public class Orders {
     private String specialRequest;
     private boolean isVIP;
 
-    public Orders(Long id, Item item, String status, boolean isVIP, String specialRequest) {
+    public Orders(Long id, Item item, String status, boolean isVIP, String specialRequest,int quantity, Customer customer) {
         this.id = id;
         this.item = item;
         this.status = status;
         this.isVIP = isVIP;
         this.specialRequest = specialRequest;
+        this.quantity=quantity;
+        this.customer = customer;
     }
 
     public Orders() {
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public Long getId() {
